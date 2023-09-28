@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Example.Source._Bookstore
+namespace Example.Source._Api
 {
-    // Variation 1.2
-    public class PotterBooks
+    public class User
     {
     }
 }

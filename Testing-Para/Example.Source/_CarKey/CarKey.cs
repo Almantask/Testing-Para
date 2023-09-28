@@ -2,7 +2,7 @@
 
 namespace Example.Source._Car
 {
-    // 
+    // ?
     public class CarKey
     {
         public Color Indicator { get; private set; }
