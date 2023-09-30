@@ -1,4 +1,4 @@
-﻿namespace Potter
+﻿namespace Example.Source._Bookstore
 {
     // v1.1
     public class BookShop

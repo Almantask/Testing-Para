@@ -1,5 +1,6 @@
+using Example.Source._Bookstore;
 using FluentAssertions;
-using static Potter.BookShop;
+using static Example.Source._Bookstore.BookShop;
 
 namespace Potter.Tests
 {
