@@ -13,8 +13,8 @@
         public Temperatures CelsiusToAll(double celsius) => new Temperatures 
         { 
             Celsius = celsius,
-            Kelvin = celsius, // TODO
-            Fahrenheit = celsius, // TODO
+            Kelvin = celsius + 273.15,
+            Fahrenheit = (9d / 5d * celsius) + 32
         };
     }
 }

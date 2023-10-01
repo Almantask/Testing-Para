@@ -20,8 +20,9 @@ namespace Example.Source.Tests._Client
             _client = new Mock<ICatMemeApiClient>();
             _logger = new Mock<ILogger>();
             _config = new CatServiceConfiguration();
+            _cache = new Mock<IMemeCache>();
 
-            _service = new SecretCatMemeService(_client.Object, _logger.Object, _config);
+            _service = new SecretCatMemeService(_client.Object, _logger.Object, _config, _cache.Object);
         }
 
         [Fact]

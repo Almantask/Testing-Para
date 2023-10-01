@@ -1,5 +1,6 @@
 ﻿using Example.Source._CashRegister;
 using FluentAssertions;
+using static Example.Source.Tests.Dummy;
 
 namespace Example.Source.Tests._CashRegister
 {
@@ -8,14 +9,18 @@ namespace Example.Source.Tests._CashRegister
         [Fact]
         public void Buy_AddsMoneyToRegistersBalance_TakesMoneyFromBankAccountsBalance()
         {
-            var cashRegister = new CashRegister();
-
-            const int initialBalance = 1;
-            var item = new Item { Price = initialBalance };
+            // Arrange
+            var item = Any<Item>();
+            
+            var initialBalance = Any<int>();
             var bankAccount = new BankAccount { Balance = initialBalance };
+            
+            var cashRegister = new CashRegister(initialBalance);
 
+            // Act
             cashRegister.Buy(item, bankAccount);
 
+            // Assert
             // Don't hardcode.
             // No need two tests - both will always happen together.
             cashRegister.Balance.Should().Be(initialBalance + item.Price);

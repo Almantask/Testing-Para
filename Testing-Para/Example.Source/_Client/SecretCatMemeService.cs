@@ -6,24 +6,33 @@
         private ICatMemeApiClient _client;
         private ILogger _logger;
         private CatServiceConfiguration _config;
+        private IMemeCache _cache;
 
-        public SecretCatMemeService(ICatMemeApiClient client, ILogger logger, CatServiceConfiguration config)
+        public SecretCatMemeService(ICatMemeApiClient client, ILogger logger, CatServiceConfiguration config, IMemeCache cache)
         {
             _client = client;
             _logger = logger;
             _config = config;
+            _cache = cache;
         }
 
-        // client - setup: current rate limit, the GET
-        // config - setup max rate limit
-        // logger - verify log
-
         public string GetRandomCatMeme()
-        {
-            // Check whether daily calls limit is exceeded or not (api, config)
-            // Get random gif (api)
-            // Log that a call was made (logger)
-            return "";
+        { 
+            var currentRate = _client.GetCurrentRate();
+            string catMeme;
+            if(currentRate < _config.RateLimit)
+            { 
+                catMeme = _cache.GetRandom();
+                _logger.LogInfo("Meme retrieved from the cache");
+            }
+            else
+            {
+                catMeme = _client.GetRandomCatMeme();
+                _cache.Add(catMeme);
+                _logger.LogInfo("Meme retrieved from a client");
+            }
+
+            return catMeme;
         }
     }
 }

@@ -30,4 +30,3 @@ namespace Example.Source.Tests._Mapper
         }
     }
 }
-}

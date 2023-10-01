@@ -60,7 +60,7 @@ namespace Potter.Tests
             price.Should().Be(29);
         }
 
-        [Fact]
+        [Fact(Skip = "Just an example of incomplete, overly complex assertion.")]
         public void Calculate_TwoSets_AppliesTwoDifferentDiscounts()
         {
             shop.Add(1, 2, 3);
